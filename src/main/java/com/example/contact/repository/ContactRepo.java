@@ -18,6 +18,7 @@ public class ContactRepo {
        contact.setEMail("qwe@mew");
        contact.setPhoneNumber("21355");
        contacts.add(contact);
+
         return contacts;
     }
 }
