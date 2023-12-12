@@ -1,74 +1,94 @@
+
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        a.create-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px;
+            width: 150px;
+            margin: 0 auto;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        a.create-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
-
-<h1>
-    Contacts
-</h1>
-
+<h1>Contacts</h1>
 <div>
     <table>
         <thead>
         <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                First name
-            </th>
-            <th>
-                Last name
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Phone
-            </th>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr  th:each="contact : ${contacts}">
-            <td th:text="${contact.id}">
-
-            </td>
-            <td th:text="${contact.firstName}">
-
-            </td>
-            <td th:text="${contact.lastName}">
-
-            </td>
-            <td th:text="${contact.eMail}">
-
-            </td>
-            <td th:text="${contact.phoneNumber}">
-
-            </td>
+        <tr th:each="contact : ${contacts}">
+            <td th:text="${contact.id}"></td>
+            <td th:text="${contact.firstName}"></td>
+            <td th:text="${contact.lastName}"></td>
+            <td th:text="${contact.eMail}"></td>
+            <td th:text="${contact.phoneNumber}"></td>
             <td>
-                <a th:href="@{/edit/{id}(id=${contact.getId()})}">
-                    Edit
-                </a>
-
-                <a th:href="@{/delete/{id}(id=${contact.getId()})}">
-                    Delete
-                </a>
+                <a href="@{/edit/{id}(id=${contact.getId()})}">Edit</a>
+                <a href="@{/delete/{id}(id=${contact.getId()})}">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
-
-    <a href="/create">
-        Create Contact
-    </a>
-
+    <a class="create-link" href="/create">Create Contact</a>
 </div>
-
 </body>
 </html>
