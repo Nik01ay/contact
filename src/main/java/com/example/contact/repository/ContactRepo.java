@@ -36,4 +36,8 @@ public class ContactRepo {
 
         return contact;
     }
+
+    public void deleteById(Integer id){
+        ;
+    }
 }

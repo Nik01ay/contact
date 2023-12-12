@@ -3,8 +3,10 @@ package com.example.contact.controller;
 import com.example.contact.model.ContactModel;
 import com.example.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +50,16 @@ public class ContactController {
         return "ошибка";
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        try {
+            contactService.deleteById(id);
+            return ResponseEntity.ok(200);
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("произошла ошибка");
+        }
+    }
 
 // todo delete and edit
 

@@ -28,4 +28,9 @@ public class ContactService {
        return ContactModel.toModel(contactRepo.get(id));
 
     }
+
+    public void deleteById(Integer id){
+
+        contactRepo.deleteById(id);
+    }
 }
