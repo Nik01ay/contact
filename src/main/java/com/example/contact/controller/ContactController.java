@@ -1,5 +1,6 @@
 package com.example.contact.controller;
 
+import com.example.contact.model.ContactModel;
 import com.example.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +16,25 @@ public class ContactController {
 
     @GetMapping("/")
     public String index(Model model) {
+
         try {
             model.addAttribute("contacts", contactService.getAll());
-
             return "index";
         } catch (Exception e) {
         }
         return "ошибка";
     }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+
+        try {
+            model.addAttribute("contact",  new ContactModel());
+            return "create";
+        } catch (Exception e) {
+        }
+        return "ошибка";
+    }
+// todo delete and edit
 
 }

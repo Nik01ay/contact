@@ -1,16 +1,19 @@
 package com.example.contact.model;
 
 import com.example.contact.entity.ContactEntity;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
+
+
 public class ContactModel {
+
     private Integer id;
+
     private String firstName;
+
     private String lastName;
+
     private String eMail;
+
     private String phoneNumber;
 
     public static ContactModel toModel(ContactEntity entity){
@@ -21,5 +24,45 @@ public class ContactModel {
         model.setEMail(entity.getEMail());
         model.setPhoneNumber(entity.getPhoneNumber());
         return model;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEMail() {
+        return eMail;
+    }
+
+    public void setEMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
