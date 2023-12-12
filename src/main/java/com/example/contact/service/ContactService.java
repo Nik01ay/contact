@@ -22,4 +22,10 @@ public class ContactService {
 
 
     }
+
+    public ContactModel get(Integer id){
+
+       return ContactModel.toModel(contactRepo.get(id));
+
+    }
 }

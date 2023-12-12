@@ -82,8 +82,8 @@
             <td th:text="${contact.eMail}"></td>
             <td th:text="${contact.phoneNumber}"></td>
             <td>
-                <a href="@{/edit/{id}(id=${contact.getId()})}">Edit</a>
-                <a href="@{/delete/{id}(id=${contact.getId()})}">Delete</a>
+                <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a>
+                <a th:href="@{/delete/{id}(id=${contact.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

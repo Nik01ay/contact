@@ -23,4 +23,17 @@ public class ContactRepo {
 
         return contacts;
     }
+
+    public ContactEntity get(Integer id){
+
+        ContactEntity contact = new ContactEntity();
+
+        contact.setId(id);
+        contact.setFirstName("INVe");
+        contact.setLastName("ewwe");
+        contact.setEMail("qwe@mew");
+        contact.setPhoneNumber("21355");
+
+        return contact;
+    }
 }

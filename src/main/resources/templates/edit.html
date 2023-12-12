@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,15 +51,17 @@
 <body>
 <form>
     <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required>
+    <input type="text" id="firstName" name="firstName" required th:value="${contact.firstName}">
     <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required>
+    <input type="text" id="lastName" name="lastName" required th:value="${contact.lastName}">
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email" required>
+    <input type="text" id="email" name="email" required th:value="${contact.eMail}">
     <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone" required>
+    <input type="text" id="phone" name="phone" required th:value="${contact.phoneNumber}">
     <button type="submit">OK</button>
+    <a href="/">
     <button type="button" class="cancel">Cancel</button>
+        </a>
 </form>
 </body>
 </html>
