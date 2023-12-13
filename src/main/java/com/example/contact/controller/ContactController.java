@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
@@ -49,15 +46,30 @@ public class ContactController {
         }
         return "ошибка";
     }
+    @PostMapping("/save/{id}")
+    public String edit(@PathVariable("id") Integer id, ContactModel contactModel) {
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Integer id) {
+        try {
+            contactService.save(contactModel);
+
+            return "redirect:/";
+        } catch (Exception e) {
+        }
+        return "ошибка";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
         try {
             contactService.deleteById(id);
-            return ResponseEntity.ok(200);
+
+            return "redirect:/";
+            //return ResponseEntity.ok(200);
 
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("произошла ошибка");
+            //return ResponseEntity.badRequest().body("произошла ошибка");
+            return "ошибка";
         }
     }
 

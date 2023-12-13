@@ -25,6 +25,16 @@ public class ContactModel {
         model.setPhoneNumber(entity.getPhoneNumber());
         return model;
     }
+    public static ContactEntity toEntity(ContactModel model){
+        ContactEntity entity = new ContactEntity();
+        entity.setId(model.getId());
+        entity.setFirstName(model.getFirstName());
+        entity.setLastName(model.getLastName());
+        entity.setEMail(model.getEMail());
+        entity.setPhoneNumber(model.getPhoneNumber());
+        return entity;
+    }
+
 
     public Integer getId() {
         return id;

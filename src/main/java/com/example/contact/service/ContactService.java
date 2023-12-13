@@ -31,6 +31,10 @@ public class ContactService {
 
     public void deleteById(Integer id){
 
-        contactRepo.deleteById(id);
+        contactRepo.deleteByIndex(id-1);
+    }
+
+    public void save(ContactModel contactModel) {
+        contactRepo.save(ContactModel.toEntity(contactModel));
     }
 }

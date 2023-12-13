@@ -49,15 +49,15 @@
     </style>
 </head>
 <body>
-<form>
+<form method="post" th:action="@{/save/{id}(id=${contact.getId()})}" th:object="${contact}">
     <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required th:value="${contact.firstName}">
+    <input type="text" id="firstName" name="firstName" required  th:field="*{firstName}">
     <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required th:value="${contact.lastName}">
+    <input type="text" id="lastName" name="lastName" required  th:field="*{lastName}">
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email" required th:value="${contact.eMail}">
+    <input type="text" id="email" name="email" required  th:field="*{eMail}">
     <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone" required th:value="${contact.phoneNumber}">
+    <input type="text" id="phone" name="phone" required th:field="*{phoneNumber}">
     <button type="submit">OK</button>
     <a href="/">
     <button type="button" class="cancel">Cancel</button>
