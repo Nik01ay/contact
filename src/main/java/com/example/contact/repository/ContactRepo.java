@@ -5,11 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
 public class ContactRepo {
-   private List<ContactEntity> contacts = new ArrayList<>();
+   private HashMap<Integer, ContactEntity> contacts = new HashMap<>();
 
     public ContactRepo(){
         ContactEntity contact = new ContactEntity();
@@ -18,35 +19,35 @@ public class ContactRepo {
         contact.setLastName("ewwe");
         contact.setEMail("qwe@mew");
         contact.setPhoneNumber("21355");
-        contacts.add(contact);
+        contacts.put(contact.getId(), contact);
         ContactEntity contact2 = new ContactEntity();
         contact2.setId(2);
         contact2.setFirstName("INVe");
         contact2.setLastName("ewwe");
         contact2.setEMail("qwe@mew");
         contact2.setPhoneNumber("21355");
-        contacts.add(contact2);
+        contacts.put(contact2.getId(), contact2);
     }
 
     public List<ContactEntity> getAll() {
 
-        return contacts;
+        return contacts.values().stream().toList();
     }
 
     public ContactEntity get(Integer id) {
         return contacts.get(id);
     }
 
-    public void deleteByIndex(Integer index) {
+    public void deleteByIndex(Integer key) {
         System.out.println(contacts);
-        contacts.remove(index);
-        System.out.println("delete - " + index);
+        contacts.remove(key);
+        System.out.println("delete - " + key);
         System.out.println(contacts);
 
     }
 
     public void save(ContactEntity contactEntity) {
 
-        contacts.add(contactEntity);
+        contacts.put(contactEntity.getId(), contactEntity);
     }
 }

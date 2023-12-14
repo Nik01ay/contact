@@ -27,6 +27,7 @@ public class ContactModel {
     }
     public static ContactEntity toEntity(ContactModel model){
         ContactEntity entity = new ContactEntity();
+        ContactEntity.rollBackLastId();
         entity.setId(model.getId());
         entity.setFirstName(model.getFirstName());
         entity.setLastName(model.getLastName());

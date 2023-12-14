@@ -4,11 +4,9 @@ import lombok.*;
 
 
 @ToString
-@RequiredArgsConstructor
-@NoArgsConstructor
 public class ContactEntity {
 
-
+    private static Integer lastId = 0;
     private Integer id;
 
     private String firstName;
@@ -18,6 +16,23 @@ public class ContactEntity {
     private String eMail;
 
     private String phoneNumber;
+
+    public ContactEntity() {
+        lastId++;
+    }
+
+    public static Integer getLastId() {
+        return lastId;
+    }
+
+    public static void setLastId(Integer lastId) {
+        ContactEntity.lastId = lastId;
+    }
+
+    public static void rollBackLastId() {
+        lastId--;
+    }
+
 
     public Integer getId() {
         return id;

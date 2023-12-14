@@ -29,7 +29,7 @@ public class ContactController {
     public String create(Model model) {
 
         try {
-            model.addAttribute("contact",  new ContactModel());
+            model.addAttribute("contact", contactService.getNewContactModel());
             return "edit";
         } catch (Exception e) {
         }
@@ -40,18 +40,18 @@ public class ContactController {
     public String edit(@PathVariable("id") Integer id, Model model) {
 
         try {
-            model.addAttribute("contact",  contactService.get(id));
+            model.addAttribute("contact", contactService.get(id));
             return "edit";
         } catch (Exception e) {
         }
         return "ошибка";
     }
-    @PostMapping("/save/{id}")
-    public String edit(@PathVariable("id") Integer id, ContactModel contactModel) {
+
+    @PostMapping("/save")
+    public String edit(ContactModel contactModel) {
 
         try {
             contactService.save(contactModel);
-
             return "redirect:/";
         } catch (Exception e) {
         }
@@ -63,16 +63,12 @@ public class ContactController {
     public String delete(@PathVariable Integer id) {
         try {
             contactService.deleteById(id);
-
             return "redirect:/";
-            //return ResponseEntity.ok(200);
 
         } catch (Exception e) {
-            //return ResponseEntity.badRequest().body("произошла ошибка");
             return "ошибка";
         }
     }
 
-// todo delete and edit
 
 }
