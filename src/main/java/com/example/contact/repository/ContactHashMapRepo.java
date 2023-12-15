@@ -1,18 +1,15 @@
 package com.example.contact.repository;
 
 import com.example.contact.entity.ContactEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Repository
-public class ContactRepo {
+@org.springframework.stereotype.Repository
+public class ContactHashMapRepo implements Repo {
    private HashMap<Integer, ContactEntity> contacts = new HashMap<>();
 
-    public ContactRepo(){
+    public ContactHashMapRepo(){
         ContactEntity contact = new ContactEntity();
         contact.setId(1);
         contact.setFirstName("INVe");
@@ -38,16 +35,16 @@ public class ContactRepo {
         return contacts.get(id);
     }
 
-    public void deleteByIndex(Integer key) {
+    public void deleteById(Integer id) {
         System.out.println(contacts);
-        contacts.remove(key);
-        System.out.println("delete - " + key);
+        contacts.remove(id);
+        System.out.println("delete - " + id);
         System.out.println(contacts);
 
     }
 
-    public void save(ContactEntity contactEntity) {
-
+    public ContactEntity save(ContactEntity contactEntity) {
         contacts.put(contactEntity.getId(), contactEntity);
+        return  contactEntity;
     }
 }

@@ -2,6 +2,8 @@ package com.example.contact.controller;
 
 import com.example.contact.model.ContactModel;
 import com.example.contact.service.ContactService;
+import com.example.contact.service.Serv;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
+@RequiredArgsConstructor
 public class ContactController {
-    @Autowired
-    ContactService contactService;
+
+    private final Serv contactService;
+
 
     @GetMapping("/")
     public String index(Model model) {
@@ -29,7 +33,7 @@ public class ContactController {
     public String create(Model model) {
 
         try {
-            model.addAttribute("contact", contactService.getNewContactModel());
+            model.addAttribute("contact", contactService.getNewContact());
             return "edit";
         } catch (Exception e) {
         }
