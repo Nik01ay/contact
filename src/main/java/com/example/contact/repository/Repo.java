@@ -3,6 +3,7 @@ package com.example.contact.repository;
 import com.example.contact.entity.ContactEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Repo {
 
@@ -10,8 +11,10 @@ public interface Repo {
 
     ContactEntity save(ContactEntity contact);
 
-    ContactEntity get(Integer id);
+   Optional <ContactEntity> get(Integer id);
 
     void deleteById(Integer id);
+
+
 }
 

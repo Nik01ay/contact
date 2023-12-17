@@ -14,52 +14,48 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class ContactController {
-
+@Autowired
     private final Serv contactService;
 
 
     @GetMapping("/")
     public String index(Model model) {
-
         try {
             model.addAttribute("contacts", contactService.getAll());
             return "index";
         } catch (Exception e) {
         }
-        return "ошибка";
+        return "error";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-
         try {
             model.addAttribute("contact", contactService.getNewContact());
             return "edit";
         } catch (Exception e) {
         }
-        return "ошибка";
+        return "error";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
-
         try {
             model.addAttribute("contact", contactService.get(id));
             return "edit";
         } catch (Exception e) {
         }
-        return "ошибка";
+        return "error";
     }
 
     @PostMapping("/save")
     public String edit(ContactModel contactModel) {
-
         try {
             contactService.save(contactModel);
             return "redirect:/";
         } catch (Exception e) {
         }
-        return "ошибка";
+        return "error";
     }
 
 
@@ -68,11 +64,9 @@ public class ContactController {
         try {
             contactService.deleteById(id);
             return "redirect:/";
-
         } catch (Exception e) {
             return "ошибка";
         }
     }
-
 
 }

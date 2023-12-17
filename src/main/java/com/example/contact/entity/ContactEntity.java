@@ -1,9 +1,12 @@
 package com.example.contact.entity;
 
 import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 
+@Data
 @ToString
+@FieldNameConstants
 public class ContactEntity {
 
     private static Integer lastId = 0;
@@ -13,7 +16,7 @@ public class ContactEntity {
 
     private String lastName;
 
-    private String eMail;
+    private String email;
 
     private String phoneNumber;
 
@@ -58,12 +61,12 @@ public class ContactEntity {
         this.lastName = lastName;
     }
 
-    public String getEMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String eMail) {
+        this.email = eMail;
     }
 
     public String getPhoneNumber() {

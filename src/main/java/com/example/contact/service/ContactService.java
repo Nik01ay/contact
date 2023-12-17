@@ -2,6 +2,7 @@ package com.example.contact.service;
 
 import com.example.contact.entity.ContactEntity;
 import com.example.contact.model.ContactModel;
+import com.example.contact.repository.ContactDBRepo;
 import com.example.contact.repository.Repo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,16 +18,15 @@ public class ContactService  implements Serv {
 
    private final Repo contactRepo;
     public List<ContactModel> getAll(){
-
         List<ContactEntity> contactEntities = contactRepo.getAll();
-
         return contactEntities.stream().map(ContactModel::toModel).collect(Collectors.toList());
 
 
     }
 
     public ContactModel get(Integer id){
-       return ContactModel.toModel(contactRepo.get(id));
+        ContactEntity ce = contactRepo.get(id).orElse(new ContactEntity());
+       return ContactModel.toModel(ce);
     }
 
     public void deleteById(Integer id){
@@ -34,7 +34,8 @@ public class ContactService  implements Serv {
     }
 
     public ContactModel save(ContactModel contactModel) {
-      ContactEntity ce =  contactRepo.save(ContactModel.toEntity(contactModel));
+
+        ContactEntity ce =  contactRepo.save(ContactModel.toEntity(contactModel));
         return ContactModel.toModel(ce);
     }
 
