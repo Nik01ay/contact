@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ContactService  implements Serv {
+public class ContactService  {
 
    private final Repo contactRepo;
     public List<ContactModel> getAll(){

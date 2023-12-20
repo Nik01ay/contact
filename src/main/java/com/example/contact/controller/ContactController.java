@@ -2,7 +2,6 @@ package com.example.contact.controller;
 
 import com.example.contact.model.ContactModel;
 import com.example.contact.service.ContactService;
-import com.example.contact.service.Serv;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ContactController {
 @Autowired
-    private final Serv contactService;
+    private final ContactService contactService;
 
 
     @GetMapping("/")
