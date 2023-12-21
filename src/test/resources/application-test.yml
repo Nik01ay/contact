@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: root
+    password: root
+    hikari:
+      schema: schema_test
+  driverClassName: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
+
+
